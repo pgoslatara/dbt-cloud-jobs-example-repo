@@ -1,0 +1,2 @@
+export DBT_API_TOKEN="..."
+export DBT_CLOUD_REGION="..."

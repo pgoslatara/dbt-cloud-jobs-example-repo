@@ -1,0 +1,26 @@
+name: ci_pipeline
+
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+  DBT_API_TOKEN: "${{ secrets.DBT_API_TOKEN }}"
+  DBT_CLOUD_REGION: "US"
+  DBT_DATASET: "ci_${{ github.event.number }}_${{ github.run_number }}_${{ github.sha }}"
+
+jobs:
+  ci_pipeline:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-python@v4
+
+      - name: Install python packages
+        run: pip install -r requirements.txt
+
+      - name: Validate `dbt_cloud_jobs.yml`
+        run: dbt_cloud_jobs --validate --file dbt_cloud_jobs.yml

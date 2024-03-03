@@ -1,0 +1,12 @@
+__pycache__/
+.env
+.envrc
+.user.yml
+.vscode/
+*.Identifier
+*.ipynb
+dbt_packages/
+logs/
+service_account*.json
+target/
+.venv/
