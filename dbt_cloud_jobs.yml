@@ -1,0 +1,103 @@
+jobs:
+- account_id: 12893
+  created_at: '2024-03-03T20:34:33.967868+00:00'
+  cron_humanized: At 04:30 AM
+  dbt_version: null
+  deactivated: false
+  deferring_environment_id: null
+  deferring_job_definition_id: null
+  description: Run every day and update my database
+  environment_id: 298663
+  execute_steps:
+  - dbt build
+  execution:
+    timeout_seconds: 120
+  generate_docs: true
+  generate_sources: false
+  id: 543990
+  is_deferrable: false
+  job_completion_trigger_condition: null
+  job_type: scheduled
+  lifecycle_webhooks: false
+  lifecycle_webhooks_url: null
+  name: Daily job
+  next_run: '2024-03-04T04:00:00+00:00'
+  next_run_humanized: 1 week
+  project_id: 354708
+  raw_dbt_version: null
+  run_audit_helper: false
+  run_failure_count: 0
+  run_generate_sources: false
+  schedule:
+    cron: 30 4 * * *
+    date:
+      cron: 30 4 * * *
+      type: custom_cron
+    time:
+      interval: 1
+      type: every_hour
+  settings:
+    target_name: default
+    threads: 8
+  state: 1
+  triggers:
+    git_provider_webhook: false
+    github_webhook: false
+    schedule: true
+  triggers_on_draft_pr: false
+  updated_at: '2024-03-03T20:34:48.295983+00:00'
+- account_id: 12893
+  created_at: '2024-03-11T19:36:47.098083+00:00'
+  cron_humanized: Every 12 hours, only on Sunday, Monday, Tuesday, Wednesday, Thursday,
+    Friday, and Saturday
+  dbt_version: null
+  deactivated: false
+  deferring_environment_id: 298663
+  deferring_job_definition_id: null
+  description: ''
+  environment_id: 298663
+  execute_steps:
+  - dbt build --select state:modified+
+  execution:
+    timeout_seconds: 0
+  generate_docs: false
+  generate_sources: false
+  id: 549476
+  is_deferrable: false
+  job_completion_trigger_condition: null
+  job_type: ci
+  lifecycle_webhooks: false
+  lifecycle_webhooks_url: null
+  name: CI job
+  next_run: null
+  next_run_humanized: null
+  project_id: 354708
+  raw_dbt_version: null
+  run_audit_helper: false
+  run_failure_count: 0
+  run_generate_sources: false
+  schedule:
+    cron: 0 */12 * * 0,1,2,3,4,5,6
+    date:
+      days:
+      - 0
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      type: days_of_week
+    time:
+      interval: 12
+      type: every_hour
+  settings:
+    target_name: default
+    threads: 4
+  state: 1
+  triggers:
+    git_provider_webhook: false
+    github_webhook: false
+    schedule: false
+  triggers_on_draft_pr: false
+  updated_at: '2024-03-11T19:36:47.098098+00:00'
